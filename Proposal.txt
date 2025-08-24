@@ -27,8 +27,62 @@ and be able to set up:
 
 *   2. Database Schema (MongoDB):
 
-    note: Hello Fedelis, i'm making a not here since Im not sure what a Database Schema is but... with what I managed to understand, here is my schema using a ER model.
-    look into ER model.doc file
+    note: Hello Fedelis, i'm making a not here since Im not sure what a Database Schema is but... with what I managed to understand, here is my schema:
+
+Users    
+{
+  _id: ObjectId,
+  username: String,
+  email: String,
+  passwordHash: String,
+  role: { type: String, enum: ["admin", "user"], default: "admin" }, 
+  createdAt: Date,
+  updatedAt: Date
+}
+
+Projects:
+
+{
+  _id: ObjectId,
+  name: String,                  
+  description: String,
+  createdBy: ObjectId,           
+  createdAt: Date,
+  updatedAt: Date
+}
+
+Categories (User-Created Fields):
+
+{
+  Userdefcat_id: ObjectId,
+  projectId: ObjectId,
+  pname: String,
+  formula: String,
+  createdAt: Date,
+  updatedAt: Date
+}
+
+Tasks:
+
+{
+  _id: ObjectId,
+  projectId: ObjectId,
+  title: String,
+  description: String,
+  startTime: Date,
+  duration: Number,
+  endTime: Date,                // auto-calculated = startTime + duration
+  completed: Boolean,           // default: false
+  customFields: [
+    {
+      categoryId: ObjectId,
+      value: String | Number | Boolean | Date
+    }
+  ],
+  createdBy: ObjectId,
+  createdAt: Date,
+  updatedAt: Date
+}
 
 *   3.  Potential Issues Using This API
         *   Data consistency: Multiple users updating tasks simultaneously could cause conflicts.
