@@ -1,0 +1,87 @@
+Project Title: Task Manager with Categories API (MERN Stack)
+
+Description:
+
+This API will allow a user (or multiple ones), after creating an account, to access a task manager that will allow the user
+to create project panel with tasks or just a panel with ungrouped tasks 
+and be able to set up:
+    *   Project name
+    *   Objectives
+    *   Task name
+    *   Creating categories
+    *   Starting time/date
+    *   Estimated duration of the task (automatically return ending time/date)
+    *   Activity resposable
+
+
+*   1. Target Audience
+    This project aims to be scalable, serving both small teams and individuals like:
+    
+    * Small workshops or production units: 
+        Owners or supervisors who need to organize, categorize, and track production-related tasks
+        using categories (e.g., “Assembler,” “Machine,” “Operation”) and setting time stamps and frames to each task.
+
+    * Individual users: 
+        People who want a robust personal task manager with multi-category support for better organization of their daily lives.
+
+
+*   2. Database Schema (MongoDB):
+
+    note: Hello Fedelis, i'm making a not here since Im not sure what a Database Schema is but... with what I managed to understand, here is my schema using a ER model.
+    look into ER model.doc file
+
+*   3.  Potential Issues Using This API
+        *   Data consistency: Multiple users updating tasks simultaneously could cause conflicts.
+        *   Category-task dependency: Deleting a category may orphan tasks unless cascade deletion or reassignment logic is built.
+        *   Authentication & Authorization: Without proper middleware, users could access or manipulate data they shouldn’t.
+        *   Scaling: If a workshop has thousands of tasks, querying performance may degrade without indexing.
+        *   Offline/Sync issues: For users in workshops with limited connectivity, syncing tasks might be challenging.
+
+*   4. Information the Project Needs to Secure
+        *   User credentials: Passwords must be hashed (bcrypt) and never stored in plain text.
+        *   Tasks List/ Information Access: Information for each 
+
+*   5. Project Functionality
+
+The project will have the next functions:
+
+    *   User managment:
+        *   Register, login and logout
+        *   Role-based access control
+            * Project manager (full autonomy and capable of assigning controls)
+            * Regular user: access and control granted by PM
+            * Viewer: self-explanatory
+
+    *   Category management:
+        * Creating, modifying and deleting categories (there will be a set of pre-structured categories based on necesities like time frame, amed lists, check box, etc)
+
+    *   Task Managment:
+        * Create, modify status or parts of tasks and delete tasks
+        * Assign tasks to categories and users
+        * Status updates
+        * (for dicussion) Filtering tasks
+
+*   6. User flow
+
+The basic user flow will be like this:
+
+    * Creating a account
+    * Creating a tasks/project panel
+    * Creating categories
+    * Creating tasks
+    * Managing tasks (assiging category elements to the task)
+    * Updating statues
+    * Archiving completed tasks
+
+*   7. Stretch features
+
+While the basic product allows user to create different tasks allows them to modify, update, delete and archive them, the current idea will improve with some additions like:
+
+    * Task Prioritization: Add priority levels (High, Medium, Low)
+    * Notifications/Reminders: Email or in-app reminders for due dates.
+    * Subtasks: Allow breaking down tasks into smaller units
+    * KPI's: Allow user to print calculated fields based on inputs in task manager
+        * Add Analytics Dashboard: Charts for calculated fields
+    
+
+
